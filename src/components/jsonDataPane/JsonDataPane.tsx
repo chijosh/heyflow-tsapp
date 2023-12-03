@@ -65,13 +65,7 @@ export const JsonDataPane: React.FC<Props> = ({ jsonData, getJsonData }) => {
         );
       }
     } else {
-      if (typeof value === 'string') {
-        return <span className="string">{`'${value}'`},</span>;
-      } else if (typeof value === 'number') {
-        return <span className="number">{value},</span>;
-      } else {
-        return <span className="value">{JSON.stringify(value)},</span>;
-      }
+        return <span className="value">'{value.toString()}',</span>;
     }
   };
 
