@@ -22,16 +22,16 @@ const CustomInput: React.FC<CustomInputProps> = ({ properties, resValue, placeho
   };
 
   return (
-    <>
+    <div className="custom-input">
       <input
         type="text"
-        className="custom-input"
+        className="custom-input__data"
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
       />
       <span className="custom-input__value">{value ? resValue || '' : ''}</span>
-    </>
+    </div>
   );
 };
 

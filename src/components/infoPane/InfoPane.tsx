@@ -46,15 +46,18 @@ const InfoPane: React.FC = () => {
       <div className="info-top">
         <div className="info-top__content">
           <h3 className="info-top__content-header">Property</h3>
+          <h3 className="info-top__content-header">Block / Variable</h3>
+        </div>
+
+        <div className="info-top__input">
           <CustomInput
             properties={resKey}
             placeholder="Property"
             resValue={resValue}
           />
-        </div>
-        <div className="info-top__content">
-          <h3 className="info-top__content-header">Block / Variable</h3>
+          <span className="info-arrow">&#8594;</span>
           <CustomInput placeholder="Variable" />
+          <span className="info-dash">-</span>
         </div>
       </div>
 
