@@ -5,7 +5,7 @@ export interface JsonData {
   [key: string]: any;
 }
 
-interface Props {
+export interface Props {
   jsonData: JsonData;
   getJsonData: (data: {
     parentKey: string | null;

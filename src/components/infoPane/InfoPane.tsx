@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { CustomInput } from "../customInput";
-import { JsonDataPane, JsonData } from "../jsonData";
+import { JsonDataPane, JsonData } from "../jsonDataPane";
 
 import "./InfoPane.scss";
 
 interface Data {
-  parentKey?: string;
-  position?: number;
+  parentKey?: string | null;
   nestedKey: string;
   nestedValue: string;
-  parentValue: string;
+  parentValue?: string;
+  position?: number | null;
 }
 
 const InfoPane: React.FC = () => {
@@ -31,19 +31,13 @@ const InfoPane: React.FC = () => {
     fetchData();
   }, []);
 
-  const getJsonData = (data: {
-    parentKey?: string | null;
-    nestedKey: string;
-    nestedValue: string;
-    parentValue?: string;
-    position?: number | null;
-  }) => {
+  const getJsonData = (data: Data) => {
     if (data.parentKey) {
       setJResKey(`res.${data.parentKey}.[${data.position}].${data.nestedKey}`);
-      setJResValue(`${data.nestedValue}` || `${data.parentValue}` || '');
+      setJResValue(`${data.nestedValue}` || `${data.parentValue}` || "");
     } else {
       setJResKey(`res.${data.nestedKey}`);
-      setJResValue(`${data.nestedValue}` || `${data.parentValue}` || '');
+      setJResValue(`${data.nestedValue}` || `${data.parentValue}` || "");
     }
   };
 

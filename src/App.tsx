@@ -1,6 +1,6 @@
 import "./App.css";
 import { Container } from "./components/container";
-import { InfoPane } from './components/info';
+import { InfoPane } from './components/infoPane';
 
 function App() {
   return (
