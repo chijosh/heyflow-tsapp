@@ -1,0 +1,42 @@
+.json-container {
+  font-family: 'Courier New', monospace; 
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0.625rem;
+  border: 0.063rem solid #ccc;
+  border-radius: 0.313rem;
+
+  .json-object {
+    margin-left: 1.25rem;
+
+    &-entry {
+      text-align: left;
+
+      .json-array {
+        .json-object-entry{
+          margin-left: 1.25rem;
+        }
+      }
+    }
+  }
+
+  .key {
+    color: blue;
+    text-align: left;
+  }
+
+  .unclickable {
+    color: inherit;
+  }
+
+  .string {
+    color: green;
+    text-align: left;
+  }
+
+  .number {
+    color: darkorange;
+    text-align: left;
+  }
+}

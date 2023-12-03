@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CustomInput } from "../customInput";
-
+import { JsonDataPane, JsonData } from "../jsonData";
 
 import "./InfoPane.scss";
 
@@ -13,15 +13,15 @@ interface Data {
 }
 
 const InfoPane: React.FC = () => {
-  const [jsonData, setJsonData] = useState<any>(null);
-  const [resKey, setJResKey] = useState<string>('');
-  const [resValue, setJResValue] = useState<string>('');
+  const [jsonData, setJsonData] = useState<JsonData | null>(null);
+  const [resKey, setJResKey] = useState<string>("");
+  const [resValue, setJResValue] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch("assets/data.json");
-        const data = await response.json();
+        const data: JsonData = await response.json();
         setJsonData(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -31,13 +31,19 @@ const InfoPane: React.FC = () => {
     fetchData();
   }, []);
 
-  const getJsonData = (data: Data) => {
+  const getJsonData = (data: {
+    parentKey?: string | null;
+    nestedKey: string;
+    nestedValue: string;
+    parentValue?: string;
+    position?: number | null;
+  }) => {
     if (data.parentKey) {
       setJResKey(`res.${data.parentKey}.[${data.position}].${data.nestedKey}`);
-      setJResValue(`${data.nestedValue}` || `${data.parentValue}`);
+      setJResValue(`${data.nestedValue}` || `${data.parentValue}` || '');
     } else {
       setJResKey(`res.${data.nestedKey}`);
-      setJResValue(`${data.nestedValue}` || `${data.parentValue}`);
+      setJResValue(`${data.nestedValue}` || `${data.parentValue}` || '');
     }
   };
 
@@ -46,7 +52,11 @@ const InfoPane: React.FC = () => {
       <div className="info-top">
         <div className="info-top__content">
           <h3 className="info-top__content-header">Property</h3>
-          <CustomInput properties={resKey} placeholder="Property" resValue={resValue} />
+          <CustomInput
+            properties={resKey}
+            placeholder="Property"
+            resValue={resValue}
+          />
         </div>
         <div className="info-top__content">
           <h3 className="info-top__content-header">Block / Variable</h3>
@@ -56,7 +66,9 @@ const InfoPane: React.FC = () => {
 
       <div className="info-bottom">
         <h3 className="info-bottom__content-header">Response</h3>
-        {/* DisplayJSON component goes here */}
+        {jsonData && (
+          <JsonDataPane jsonData={jsonData} getJsonData={getJsonData} />
+        )}
       </div>
     </div>
   );
