@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent, FC } from "react";
 import "./CustomInput.scss";
 
 interface CustomInputProps {
@@ -7,7 +7,7 @@ interface CustomInputProps {
   placeholder?: string;
 }
 
-const CustomInput: React.FC<CustomInputProps> = ({ properties, resValue, placeholder }) => {
+const CustomInput: FC<CustomInputProps> = ({ properties, resValue, placeholder }) => {
   const [value, setValue] = useState<string>(properties || "");
 
   useEffect(() => {

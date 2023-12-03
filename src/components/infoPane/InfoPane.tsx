@@ -61,6 +61,11 @@ const InfoPane: React.FC = () => {
         </div>
       </div>
 
+      <div className="info-center">
+      <div className="info-center__assign"><span>+</span> <span>Assign to variable</span></div>
+        <div className="info-center__assign"><span>+</span> <span>Assign to block</span></div>
+      </div>
+
       <div className="info-bottom">
         <h3 className="info-bottom__content-header">Response</h3>
         {jsonData && (
