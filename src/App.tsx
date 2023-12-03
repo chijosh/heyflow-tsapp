@@ -1,16 +1,12 @@
 import "./App.css";
 import { Container } from "./components/container";
-import { CustomInput } from "./components/customInput";
+import { InfoPane } from './components/info';
 
 function App() {
   return (
     <div className="App">
       <Container>
-        <CustomInput
-          properties="ai5678sd"
-          placeholder="Property"
-          resValue="ai5678sd"
-        />
+      <InfoPane />
       </Container>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import CustomInput from './CustomInput';
 
 describe('Input component', () => {
@@ -7,11 +7,11 @@ describe('Input component', () => {
     const placeholderText = 'Enter text';
     const resValue = 'Result';
 
-    const { getByPlaceholderText, getByText } = render(
+    render(
       <CustomInput placeholder={placeholderText} resValue={resValue} />
     );
 
-    const inputElement = getByPlaceholderText(placeholderText);
+    const inputElement = screen.getByPlaceholderText(placeholderText);
     expect(inputElement).toBeInTheDocument();
 
     const inputValue = 'Test Input';
@@ -19,7 +19,7 @@ describe('Input component', () => {
 
     expect(inputElement).toHaveValue(inputValue);
 
-    const resultElement = getByText(resValue);
+    const resultElement = screen.getByText(resValue);
     expect(resultElement).toBeInTheDocument();
   });
 });

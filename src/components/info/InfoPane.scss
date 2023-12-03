@@ -1,0 +1,29 @@
+.info {
+  display: flex;
+  flex-direction: column;
+
+  &-top {
+    display: flex;
+
+    &__content {
+      text-align: left;
+      width: 18.75rem;
+
+      &-header {
+        font-family: inherit;
+        margin: 6px 0;
+        font-weight: 300;
+      }
+    }
+  }
+
+  &-bottom {
+    text-align: left;
+
+    &__content-header {
+      font-family: inherit;
+      margin: 6px 0;
+      font-weight: 300;
+    }
+  }
+}
